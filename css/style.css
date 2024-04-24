@@ -2752,8 +2752,8 @@ textarea.form-control {
 /* Navbar */
 .navbar {
   padding: 0;
-  height: 90px;
-  max-height: 90px;
+  height: 80px;
+  max-height: 80px;
   background-color: #ffffff;
   -webkit-box-shadow: 0 3px 6px rgba(0, 0, 0, 0.05);
   box-shadow: 0 3px 6px rgba(0, 0, 0, 0.05);
@@ -2763,13 +2763,13 @@ textarea.form-control {
 .navbar>.container,
 .navbar>.container-fluid {
   position: relative;
-  height: 90px;
+  height: 80px;
 }
 
 .navbar .navbar-brand {
   padding: 0;
   margin: 0;
-  line-height: 90px;
+  line-height: 80px;
 }
 
 .navbar .logo-light {
@@ -2843,7 +2843,7 @@ textarea.form-control {
   display: block;
   position: relative;
   color: #1b1a1a;
-  line-height: 90px;
+  line-height: 80px;
   letter-spacing: 0.4px;
 }
 
@@ -3348,8 +3348,8 @@ textarea.form-control {
   }
 
   .header-layout1 .navbar .navbar-brand img {
-    width: 250px;
-    height: 90px;
+    /* width: 240px; */
+    height: 80px;
   }
 
   .header-layout1 .action-btn__request,
@@ -3546,7 +3546,7 @@ textarea.form-control {
 
   .header-layout1 .navbar .navbar-brand img {
     width: 200px;
-    height: 39px;
+    height: 80px;
   }
 
   .header .logo-light,
@@ -3592,7 +3592,7 @@ textarea.form-control {
   .header-transparent .header-layout2 .navbar,
   .header-transparent .header-layout2 .navbar .navbar-brand,
   .header-transparent .navbar-brand {
-    margin-left: 15px;
+    margin-left: 0px;
     line-height: 80px !important;
   }
 
@@ -3655,7 +3655,7 @@ textarea.form-control {
 @media (max-width: 520px) {
   .header-layout1 .navbar .navbar-brand img {
     width: 150px;
-    height: 28px;
+    height: 80px;
   }
 }
 
