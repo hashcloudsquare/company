@@ -5,8 +5,6 @@ $(function () {
     // Global variables
     var $win = $(window);
 
-
-
     /*==========   Mobile Menu   ==========*/
     var $navToggler = $('.navbar-toggler');
     $navToggler.on('click', function () {

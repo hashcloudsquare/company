@@ -3181,8 +3181,8 @@ textarea.form-control {
   background-color: #ffffff !important;
   -webkit-box-shadow: 0 3px 4px rgba(0, 0, 0, 0.07);
   box-shadow: 0 3px 4px rgba(0, 0, 0, 0.07);
-  -webkit-animation: translateHeader 0.8s;
-  animation: translateHeader 0.8s;
+  /**-webkit-animation: translateHeader 0.8s;**/
+  /**animation: translateHeader 0.8s;**/
   -webkit-box-shadow: 0 3px 6px rgba(0, 0, 0, 0.05) !important;
   box-shadow: 0 3px 6px rgba(0, 0, 0, 0.05) !important;
 }
