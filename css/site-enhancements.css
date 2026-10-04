@@ -162,3 +162,18 @@
     padding: 24px;
   }
 }
+
+.genai-service-icon {
+  width: 82px;
+  height: 82px;
+  margin: 0 auto;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 50%;
+  background: #15b5b0;
+  color: #fff;
+  font-size: 42px;
+  line-height: 1;
+  box-shadow: 0 10px 25px -12px rgba(21, 181, 176, 0.8);
+}
