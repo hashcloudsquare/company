@@ -6,8 +6,9 @@ $(function () {
 
   // Mobile navigation.
   $(".navbar-toggler").on("click", function () {
-    $(this).toggleClass("actived");
-    $(".navbar-collapse").toggleClass("menu-opened");
+    const isOpen = $(this).toggleClass("actived").hasClass("actived");
+    $(this).attr("aria-expanded", isOpen);
+    $(".navbar-collapse").toggleClass("menu-opened", isOpen);
   });
 
   // Sticky navigation.
