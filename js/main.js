@@ -1,110 +1,69 @@
 $(function () {
+  "use strict";
 
-    "use strict";
+  const $window = $(window);
+  const $navbar = $(".navbar");
 
-    // Global variables
-    var $win = $(window);
+  // Mobile navigation.
+  $(".navbar-toggler").on("click", function () {
+    $(this).toggleClass("actived");
+    $(".navbar-collapse").toggleClass("menu-opened");
+  });
 
-    /*==========   Mobile Menu   ==========*/
-    var $navToggler = $('.navbar-toggler');
-    $navToggler.on('click', function () {
-        $(this).toggleClass('actived');
-    })
-    $navToggler.on('click', function () {
-        $('.navbar-collapse').toggleClass('menu-opened');
-    })
+  // Sticky navigation.
+  $window.on("scroll", function () {
+    $navbar.toggleClass("is-sticky", $window.scrollTop() > 50);
+  });
 
-    /*==========   Sticky Navbar   ==========*/
-    $win.on('scroll', function () {
-        if ($win.width() >= 992) {
-            var $navbar = $('.navbar');
-            if ($win.scrollTop() > 50) {
-                $navbar.addClass('is-sticky');
-            } else {
-                $navbar.removeClass('is-sticky');
-            }
-        }
-    });
+  // Smooth scrolling for internal links.
+  $('a[href^="#"]').on("click", function (event) {
+    const target = $(this.getAttribute("href"));
 
-    /*==========  Search Popup  ==========*/
-    $('.action-btn__search').on('click', function (e) {
-        e.preventDefault();
-        $('.search-popup').toggleClass('active', 'inActive').removeClass('inActive');
-    });
-    // Close Module Search
-    $('.search-popup__close').on('click', function () {
-        $('.search-popup').removeClass('active').addClass('inActive');
-    });
+    if (target.length) {
+      event.preventDefault();
+      $("html, body").animate(
+        { scrollTop: target.offset().top - 80 },
+        500
+      );
 
-    /*==========   Scroll Top Button   ==========*/
-    var $scrollTopBtn = $('#scrollTopBtn');
-    // Show Scroll Top Button
-    $win.on('scroll', function () {
-        if ($(this).scrollTop() > 700) {
-            $scrollTopBtn.addClass('actived');
-        } else {
-            $scrollTopBtn.removeClass('actived');
-        }
-    });
-    // Animate Body after Clicking on Scroll Top Button
-    $scrollTopBtn.on('click', function () {
-        $('html, body').animate({
-            scrollTop: 0
-        }, 500);
-    });
-
-    /*==========   Set Background-img to section   ==========*/
-    $('.bg-img').each(function () {
-        var imgSrc = $(this).children('img').attr('src');
-        $(this).parent().css({
-            'background-image': 'url(' + imgSrc + ')',
-            'background-size': 'cover',
-            'background-position': 'center',
-        });
-        $(this).parent().addClass('bg-img');
-        if ($(this).hasClass('background-size-auto')) {
-            $(this).parent().addClass('background-size-auto');
-        }
-        $(this).remove();
-    });
-
-    /*==========   Add active class to accordions   ==========*/
-    $('.accordion__item-header').on('click', function () {
-        $(this).parent('.accordion-item').addClass('opened');
-        $(this).parent('.accordion-item').siblings().removeClass('opened');
-    })
-    $('.accordion__item-title').on('click', function (e) {
-        e.preventDefault()
-    });
-
-    /*==========   Load More Items  ==========*/
-    function loadMore(loadMoreBtn, loadedItem) {
-        $(loadMoreBtn).on('click', function (e) {
-            e.preventDefault();
-            $(this).fadeOut();
-            $(loadedItem).fadeIn();
-        })
+      $(".navbar-toggler").removeClass("actived");
+      $(".navbar-collapse").removeClass("menu-opened");
     }
+  });
 
-    loadMore('.loadMoreportfolio', '.portfolio-hidden > .portfolio-item');
+  // Back to top, when the existing control is present.
+  const $scrollTopBtn = $("#scrollTopBtn");
 
+  $window.on("scroll", function () {
+    $scrollTopBtn.toggleClass("actived", $window.scrollTop() > 700);
+  });
 
-    /*==========   Slick Carousel ==========*/
-    $('.slick-carousel').slick();
+  $scrollTopBtn.on("click", function () {
+    $("html, body").animate({ scrollTop: 0 }, 500);
+  });
 
-    /*==========   counterUp  ==========*/
-    $(".counter").counterUp({
-        delay: 10,
-        time: 4000
-    });
+  // Existing template components are optional; initialise them only when
+  // their markup is actually present.
+  if ($(".slick-carousel").length && $.fn.slick) {
+    $(".slick-carousel").slick();
+  }
 
-    /*==========  NiceSelect Plugin  ==========*/
-    $('select').niceSelect();
+  // Lightweight GenAI service-card interaction.
+  $(".genai-use-case").on("click", function () {
+    const useCase = $(this).data("use-case");
+    const prompt = $("#genaiPrompt");
 
-    /*==========   portfolio Filtering and Sorting  ==========*/
-    $("#filtered-items-wrap").mixItUp();
-    $(".portfolio-filter li a").on("click", function (e) {
-        e.preventDefault();
-    });
-
+    if (prompt.length && useCase) {
+      prompt.val(
+        "I want to explore " +
+          useCase +
+          " for my business. What would the approach, benefits, and first steps look like?"
+      );
+      prompt.trigger("focus");
+      $("html, body").animate(
+        { scrollTop: $("#genai-section").offset().top - 80 },
+        500
+      );
+    }
+  });
 });
